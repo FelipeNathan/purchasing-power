@@ -1,0 +1,33 @@
+{
+  "name": "purchasing-power",
+  "version": "1.0.0",
+  "description": "Project to calculate the purchasing\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C\u001b[C a\u001b[2~nd compare the purchasing power between two coins/country",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "postinstall": "npm run build",
+    "start": "node dist/server.js",
+    "dev": "nodemon ./src/server.ts",
+    "watch-node": "nodemon dist/server.js",
+    "watch-ts": "tsc -w"
+  },
+  "author": "Felipe Nathan Campigoto",
+  "license": "MIT",
+  "dependencies": {
+    "@types/dateformat": "^3.0.1",
+    "axios": "^0.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "ioredis": "^4.16.3",
+    "puppeteer": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/ioredis": "^4.16.0",
+    "@types/puppeteer": "^2.0.1",
+    "nodemon": "^2.0.3",
+    "ts-node": "^8.10.1",
+    "tslint": "^6.1.2",
+    "typescript": "^3.8.3"
+  }
+}

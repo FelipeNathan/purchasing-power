@@ -1,0 +1,26 @@
+{
+  "short_name": "Purchasing Power",
+  "name": "Purchasing Power | Comparador de poder de compra",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "description": "Um comparador de poder de compra, utiliza o método Índice Big Mac para comparar o poder de compra da moeda local em ambiente estrangeiro e o método Quantidade de Big Mac por salário mínimo para comparar o poder de compra nacional"
+}

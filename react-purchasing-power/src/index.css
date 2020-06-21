@@ -1,0 +1,32 @@
+body {
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f1f1f1 !important;
+  height: 100vh !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.card-header {
+  background-color: #17a2b8 !important;
+  color: white;
+}
+
+p {
+  text-indent: 2rem;
+}
+
+table p {
+  text-indent: 0;
+}
+
+.content {
+  padding-top: 5rem;
+}
+
+.footer {
+  padding: 1rem;
+}
