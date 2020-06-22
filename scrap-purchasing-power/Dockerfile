@@ -8,8 +8,6 @@ RUN npm install -g typescript
 
 COPY . ./
 
-EXPOSE 3500
-
 CMD npm run postinstall && npm start
 
 # docker build . -t scrap-image

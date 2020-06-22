@@ -8,10 +8,7 @@ services:
         container_name: scrap-container
         ports: 
             - 3500:3500
-        environment: 
-            PORT: 3500
-            QUANDL_API_KEY: ''
-            REDIS_URL: ''
+        env_file: ./scrap-purchasing-power/.env
         restart: always
 
     react-purchasing-power:
@@ -22,9 +19,7 @@ services:
         container_name: react-container
         ports: 
             - 3000:3000
-        environment: 
-            REACT_APP_SCRAP_API: http://localhost:3500
-            PORT: 3000
+        env_file: ./react-purchasing-power/.env
         restart: always
         stdin_open: true
         depends_on: 

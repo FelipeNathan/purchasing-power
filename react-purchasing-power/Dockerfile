@@ -8,8 +8,6 @@ RUN npm install -g react-scripts@3.4.1
 
 COPY . ./
 
-EXPOSE 3000
-
 CMD npm run start
 
 # docker build . -t react-image
