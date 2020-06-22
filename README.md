@@ -8,11 +8,11 @@ This is the project that Dockerize the react-purchasing-power and scrap-purchasi
 
 Docker-compose will run the front-end and a api
 
-Just accesss http://localhost:3000
+* Just accesss http://localhost:3000
 
 #### Prerequisites
-<p> Docker </p>
-<p> docker-compose </p>
+* Docker
+* docker-compose
 
 #### Commands
 * RUN: `docker-compose up -d` (this command will create and start containers)
