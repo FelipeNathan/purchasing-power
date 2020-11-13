@@ -32,7 +32,9 @@ services:
             REDIS_URL: redis://redis-purchasing-power:6379
             QUANDL_API_KEY: u6Z1dfJhnU2aDNQdB5F7
             SCRAP_HOST: http://scrap-purchasing-power:3500
-            DATABASE_URL: postgres://postgres:123@db-purchasing-power/purchasing-power-dev
+            DATABASE_URL: postgresql://postgres:123@db-purchasing-power/purchasing-power-dev
+            DATABASE_HOST: db-purchasing-power # For script docker-entrypoint.sh
+            DATABASE_PORT: 5432 # For script docker-entrypoint.sh
         stdin_open: true
         restart: always
         depends_on: 

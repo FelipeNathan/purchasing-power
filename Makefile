@@ -1,13 +1,27 @@
-heroku:
+heroku-remote:
 	git remote add heroku-api-purchasing-power https://git.heroku.com/api-purchasing-power.git
-	heroku buildpacks:add -a api-purchasing-power -i 1 https://github.com/lstoll/heroku-buildpack-monorepo
 	git remote add heroku-scrap-purchasing-power https://git.heroku.com/scrap-purchasing-power.git
-	heroku buildpacks:add -a scrap-purchasing-power -i 1 https://github.com/lstoll/heroku-buildpack-monorepo
 	git remote add heroku-purchasing-power https://git.heroku.com/purchasing-power.git
-	heroku buildpacks:add -a purchasing-power -i 1 https://github.com/lstoll/heroku-buildpack-monorepo
+
+heroku-buildpacks:
+	heroku buildpacks:add -a api-purchasing-power -i 1 https://github.com/lstoll/heroku-buildpack-monorepo
+	heroku buildpacks:add -a api-purchasing-power heroku/ruby
 	
-deploy:
+	heroku buildpacks:add -a scrap-purchasing-power -i 1 https://github.com/lstoll/heroku-buildpack-monorepo
+	heroku buildpacks:add -a scrap-purchasing-power heroku/nodejs
+	heroku buildpacks:add -a scrap-purchasing-power jontewks/puppeteer
+
+	heroku buildpacks:add -a purchasing-power -i 1 https://github.com/lstoll/heroku-buildpack-monorepo
+	heroku buildpacks:add -a purchasing-power mars/create-react-app
+	
+heroku-deploy-api:
 	heroku config:set APP_BASE=api-purchasing-power -a api-purchasing-power
+	git push heroku-api-purchasing-power master
+
+heroku-deploy-scrap:
 	heroku config:set APP_BASE=scrap-purchasing-power -a scrap-purchasing-power
+	git push heroku-scrap-purchasing-power master
+
+heroku-deploy-react:
 	heroku config:set APP_BASE=react-purchasing-power -a purchasing-power
-	git push heroku master
+	git push heroku-purchasing-power master
