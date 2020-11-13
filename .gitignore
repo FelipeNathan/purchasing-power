@@ -22,5 +22,22 @@
 **/yarn-debug.log*
 **/yarn-error.log*
 **/.git
-#renomeando o .git pra poder adicionar as alterações dos projetos filhos que também estão em repositório (este é um projeto teste)
-**/_.git 
+
+# Ignore bundler config.
+/api-purchasing-power/.bundle
+
+# Ignore all logfiles and tempfiles.
+/api-purchasing-power/log/*
+/api-purchasing-power/tmp/*
+!/api-purchasing-power/log/.keep
+!/api-purchasing-power/tmp/.keep
+
+# Ignore pidfiles, but keep the directory.
+/api-purchasing-power/tmp/pids/*
+!/api-purchasing-power/tmp/pids/
+!/api-purchasing-power/tmp/pids/.keep
+
+/api-purchasing-power.byebug_history
+
+# Ignore master key for decrypting credentials and more.
+/api-purchasing-power/config/master.key
