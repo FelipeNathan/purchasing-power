@@ -1,0 +1,2 @@
+release: rails db:create && rails db:migrate && rails db:seed
+web: rails s -b 0.0.0.0
