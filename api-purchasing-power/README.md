@@ -6,8 +6,8 @@ This is the back-end API project of the Purchasing Power, made with Ruby On Rail
 This project is still in progress, cuz I'm migrating some features of scrap-purchasing-power to this project.
 
 #### Techs
-- Ruby
-- Rails
+- ![](https://img.shields.io/badge/Ruby-2.2.6-green)
+- ![](https://img.shields.io/badge/Rails-6.0.3-green)
 
 
 #### Setup
