@@ -17,6 +17,7 @@ services:
         restart: always
         volumes: 
             - "./scrap-purchasing-power:/app"
+            - "/app/node_modules"
 
     api-purchasing-power:
         build: 
