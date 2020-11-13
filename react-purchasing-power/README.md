@@ -14,12 +14,12 @@ This is the front-end project of the Purchasing Power, made with React, where th
 #### Setup
 First clone our repository
 ```
-git clone https://github.com/FelipeNathan/react-purchasing-power.git
+git clone https://github.com/FelipeNathan/purchasing-power.git
 ```
 
 Navigate to react-purchasing-power app
 ```
-cd react-purchasing-power
+cd purchasing-power/react-purchasing-power
 ```
 
 Then install dependencies

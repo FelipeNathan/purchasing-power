@@ -4,23 +4,59 @@ services:
         build: 
             dockerfile: Dockerfile
             context: ./scrap-purchasing-power
-        image: scrap-image
-        container_name: scrap-container
+        image: scrap-purchasing-power-image
+        container_name: scrap-purchasing-power-container
         ports: 
             - 3500:3500
-        env_file: ./scrap-purchasing-power/.env
+        # env_file: ./scrap-purchasing-power/.env
+        environment: 
+            PORT: 3500
+            REDIS_URL: redis://redis-purchasing-power:6379
+            QUANDL_API_KEY: u6Z1dfJhnU2aDNQdB5F7
+        stdin_open: true
         restart: always
+        volumes: 
+            - "./scrap-purchasing-power:/app"
+
+    api-purchasing-power:
+        build: 
+            dockerfile: Dockerfile
+            context: ./api-purchasing-power
+        image: api-purchasing-power-image
+        container_name: api-purchasing-power-container
+        ports: 
+            - 4000:4000
+        # env_file: ./api-purchasing-power/.env
+        environment: 
+            PORT: 4000
+            REDIS_URL: redis://redis-purchasing-power:6379
+            QUANDL_API_KEY: u6Z1dfJhnU2aDNQdB5F7
+            SCRAP_HOST: http://scrap-purchasing-power:3500
+        stdin_open: true
+        restart: always
+        # depends_on: 
+        #     - scrap-purchasing-power
+        volumes: 
+            - "./api-purchasing-power:/app"
 
     react-purchasing-power:
         build: 
             dockerfile: Dockerfile
             context: ./react-purchasing-power
-        image: react-image
-        container_name: react-container
+        image: react-purchasing-power-image
+        container_name: react-purchasing-power-container
         ports: 
             - 3000:3000
-        env_file: ./react-purchasing-power/.env
-        restart: always
+        # env_file: ./react-purchasing-power/.env
+        environment: 
+            REACT_APP_SCRAP_API: http://localhost:4000
         stdin_open: true
-        depends_on: 
-            - scrap-purchasing-power
+        restart: always
+        # depends_on: 
+        #     - api-purchasing-power
+        volumes: 
+            - "./react-purchasing-power:/app"
+            - "/app/node_modules"
+
+    redis-purchasing-power:
+        image: 'redis'

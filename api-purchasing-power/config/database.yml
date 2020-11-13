@@ -1,0 +1,19 @@
+development:
+   adapter: sqlite3
+   database: db/purchasing-power.sqlite3
+   pool: 5
+   timout: 5000
+
+
+test:
+   adapter: sqlite3
+   database: db/purchasing-power-test.sqlite3
+   pool: 5
+   timout: 5000
+
+# production:
+#    adapter: sqlite3
+#    database: purchasing-power
+#    username: ${DB_USER}
+#    password: ${DB_PASSWORD}
+#    host: ${DB_HOST}

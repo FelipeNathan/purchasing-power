@@ -26,8 +26,8 @@ cd scrap-purchasing-power
 
 Then install dependencies
 
-<p> Npm: `npm install` </p>
-<p> Yarn: `yarn install` </p>
+* Npm: `npm install`
+* Yarn: `yarn install`
 
 and execute
 
@@ -38,9 +38,9 @@ _Obs: The `dev` configuration use `nodemon` that restart the server automaticall
 
 #### Environment Variable
 In .env file at root project, configure:
-<p> `PORT`: the server will listen this configuration </p>
-<p> `REDIS_URL`: url for redis caching </p>
-<p> `QUANDL_API_KEY`: key of quandl api </p>
+* `PORT`: the server will listen this configuration
+* `REDIS_URL`: url for redis caching
+* `QUANDL_API_KEY`: key of quandl api
 
 #### Next Features
 - [x] Caching the wage infos

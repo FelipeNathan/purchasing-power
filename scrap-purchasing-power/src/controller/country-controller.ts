@@ -16,6 +16,8 @@ const getBigMacIndex = async (req, res) => {
 
 const getCountryInfo = async (req, res) => {
 
+    console.log(req.query);
+    console.log(req.query.country);
     const countries = repository.getAllCountries()
     const countryName = countries.filter(c => c.abbrev === req.query.country)[0].name
     const countriesWages = await WageService.getWages()

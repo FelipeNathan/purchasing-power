@@ -1,7 +1,7 @@
 import axiosRetry from 'axios-retry'
 import axios from 'axios'
 
-const baseUrl = `${process.env.REACT_APP_SCRAP_API}/api`
+const baseUrl = `${process.env.REACT_APP_SCRAP_API}`
 
 var api = axios.create({
     baseURL: baseUrl

@@ -24,6 +24,7 @@ Docker-compose will run the front-end and a api
 * `REDIS_URL`: url for redis caching
 * `QUANDL_API_KEY`: key of quandl api
 * `REACT_APP_SCRAP_API`: Url for api server
+* `SCRAP_HOST`: Url for scrap project
 
 ### Collaborators
 | [@FelipeNathan][felipenathan] |

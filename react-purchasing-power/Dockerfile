@@ -1,14 +1,13 @@
 FROM node:lts-alpine3.9
 
 WORKDIR /app
-COPY package*.json ./
+COPY package*.json /app/
 
-RUN npm install
-RUN npm install -g react-scripts@3.4.1
+ENV PATH /app/node_modules/.bin:$PATH
 
-COPY . ./
+RUN npm install --silent
+RUN npm install -g react-scripts@3.4.1 --silent
 
-CMD npm run start
+COPY . /app
 
-# docker build . -t react-image
-# docker run -p 3000:3000 -i -t /bin/bash --name react-container react-image
+CMD ["npm", "start"]
