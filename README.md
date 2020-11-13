@@ -25,6 +25,9 @@ Docker-compose will run the front-end and a api
 * `QUANDL_API_KEY`: key of quandl api
 * `REACT_APP_SCRAP_API`: Url for api server
 * `SCRAP_HOST`: Url for scrap project
+* `DB_HOST`: db-purchasing-power
+* `DB_USERNAME`: postgres
+* `DB_PASSWORD`: 123
 
 ### Collaborators
 | [@FelipeNathan][felipenathan] |

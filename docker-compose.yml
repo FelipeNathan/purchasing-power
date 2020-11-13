@@ -32,10 +32,13 @@ services:
             REDIS_URL: redis://redis-purchasing-power:6379
             QUANDL_API_KEY: u6Z1dfJhnU2aDNQdB5F7
             SCRAP_HOST: http://scrap-purchasing-power:3500
+            DB_HOST: db-purchasing-power
+            DB_USERNAME: postgres
+            DB_PASSWORD: 123
         stdin_open: true
         restart: always
-        # depends_on: 
-        #     - scrap-purchasing-power
+        depends_on: 
+            - db-purchasing-power
         volumes: 
             - "./api-purchasing-power:/app"
 
@@ -52,11 +55,16 @@ services:
             REACT_APP_SCRAP_API: http://localhost:4000
         stdin_open: true
         restart: always
-        # depends_on: 
-        #     - api-purchasing-power
         volumes: 
             - "./react-purchasing-power:/app"
             - "/app/node_modules"
 
     redis-purchasing-power:
         image: 'redis'
+        container_name: redis-purchasing-power-container
+
+    db-purchasing-power:
+        image: 'postgres'
+        container_name: db-purchasing-power-container
+        environment: 
+            POSTGRES_PASSWORD: 123

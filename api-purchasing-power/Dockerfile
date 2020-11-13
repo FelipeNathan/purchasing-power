@@ -1,7 +1,9 @@
 FROM ruby:2.6
 
 RUN apt-get update
-RUN apt-get install -y sqlite3 libsqlite3-dev 
+RUN apt-get install -y libpq-dev \
+    && wget -O /usr/local/bin/wait-for-it.sh https://raw.githubusercontent.com/vishnubob/wait-for-it/55c54a5abdfb32637b563b28cc088314b162195e/wait-for-it.sh \
+    && chmod +x /usr/local/bin/wait-for-it.sh 
 
 WORKDIR /app
 
@@ -12,8 +14,5 @@ RUN gem install bundler
 RUN bundle install
 
 COPY . /app
-
-RUN rake db:migrate
-RUN rake db:seed
 
 ENTRYPOINT [ "./entrypoints/docker-entrypoint.sh" ]

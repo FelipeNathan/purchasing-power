@@ -1,19 +1,21 @@
-development:
-   adapter: sqlite3
-   database: db/purchasing-power.sqlite3
+default: &default
+   adapter: postgresql
+   enconding: unicode
    pool: 5
-   timout: 5000
+   host: <%= ENV['DB_HOST'] %>
+   username: <%= ENV['DB_USERNAME'] %>
+   password: <%= ENV['DB_PASSWORD'] %>
+
+development:
+   <<: *default
+   database: purchasing-power-dev
 
 
 test:
-   adapter: sqlite3
-   database: db/purchasing-power-test.sqlite3
-   pool: 5
-   timout: 5000
+   <<: *default
+   database: purchasing-power-test
 
-# production:
-#    adapter: sqlite3
-#    database: purchasing-power
-#    username: ${DB_USER}
-#    password: ${DB_PASSWORD}
-#    host: ${DB_HOST}
+production:
+   <<: *default
+   database: purchasing-power
+   
