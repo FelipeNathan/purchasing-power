@@ -8,7 +8,7 @@ This is the project that Dockerize the react-purchasing-power and scrap-purchasi
 
 Docker-compose will run the front-end and a api
 
-* Just accesss http://localhost:3000
+* Just access http://localhost:3000
 
 #### Prerequisites
 * Docker
@@ -25,9 +25,7 @@ Docker-compose will run the front-end and a api
 * `QUANDL_API_KEY`: key of quandl api
 * `REACT_APP_SCRAP_API`: Url for api server
 * `SCRAP_HOST`: Url for scrap project
-* `DB_HOST`: db-purchasing-power
-* `DB_USERNAME`: postgres
-* `DB_PASSWORD`: 123
+* `DATABASE_URL`: db-purchasing-power connection string
 
 ### Collaborators
 | [@FelipeNathan][felipenathan] |

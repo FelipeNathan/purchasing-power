@@ -42,9 +42,7 @@ In .env file at root project, configure:
 * `REDIS_URL`: url for redis caching
 * `QUANDL_API_KEY`: key of quandl api
 * `SCRAP_HOST`: Url for scrap-purchasing-power app
-* `DB_HOST`: db-purchasing-power
-* `DB_USERNAME`: postgres
-* `DB_PASSWORD`: 123
+* `DATABASE_URL`: db-purchasing-power connection string
 
 ### Collaborators
 | [@FelipeNathan][felipenathan] |
