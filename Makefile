@@ -17,6 +17,8 @@ heroku-buildpacks:
 heroku-deploy-api:
 	heroku config:set APP_BASE=api-purchasing-power -a api-purchasing-power
 	git push heroku-api-purchasing-power master
+	heroku run -a api-purchasing-power rake db:migrate
+	heroku run -a api-purchasing-power rake db:seed
 
 heroku-deploy-scrap:
 	heroku config:set APP_BASE=scrap-purchasing-power -a scrap-purchasing-power
