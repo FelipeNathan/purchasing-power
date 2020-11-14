@@ -3,18 +3,18 @@ require 'net/http'
 class RequestScrapService
 
     def initialize
-        @scrap_host_api = "#{ENV['SCRAP_HOST']}/api"
+        @api_base = ENV['SCRAP_HOST'] + "/api"
     end
 
     def request_wages
-        uri = URI("#{@scrap_host_api}/wages")
+        uri = URI("#{@api_base}/wages")
         Net::HTTP.get(uri)
     end
 
     def request_country_info(country)
         params = { :country => country }
 
-        uri = URI("#{@scrap_host_api}/country-info")
+        uri = URI("#{@api_base}/country-info")
         uri.query = URI.encode_www_form(params)
 
         Net::HTTP.get(uri)
@@ -24,7 +24,7 @@ class RequestScrapService
 
         params = { :country => country, :limit => limit }
 
-        uri = URI("#{@scrap_host_api}/bmi")
+        uri = URI("#{@api_base}/bmi")
         uri.query = URI.encode_www_form(params)
 
         Net::HTTP.get(uri)

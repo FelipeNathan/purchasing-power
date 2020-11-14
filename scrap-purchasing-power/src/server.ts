@@ -14,9 +14,6 @@ app.use((req, res) => res.status(404).send(`
     Rota não identificada, por favor use: <br/>
     ${req.baseUrl}/ <br/>
     ${req.baseUrl}/api/wages <br/>
-    ${req.baseUrl}/api/countries <br/>
-    ${req.baseUrl}/api/country-info <br/>
-    ${req.baseUrl}/api/bmi <br/>
 `))
 
 app.listen(process.env.PORT || 3500)

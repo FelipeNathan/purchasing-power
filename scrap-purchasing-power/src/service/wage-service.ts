@@ -1,18 +1,8 @@
 import puppeteer from 'puppeteer';
-import WageRepository from '../repository/wage-repository'
 
 const getWages = async () => {
-
-    let wages = await WageRepository.getWageCache()
-
-    if (!wages) {
-
-        wages = await scrapWages()
-        normalize(wages)
-
-        WageRepository.saveWageCache(wages)
-    }
-
+    let wages = await scrapWages()
+    normalize(wages)
     return wages
 }
 
