@@ -3,23 +3,29 @@ A project to compare the purchasing power of countries, using the concept of [Bi
 
 This is the project that Dockerize the react-purchasing-power and scrap-purchasing-power
 
+## Instalation
+For Window user, need to download the project with linux file type (lf instad crlf)
+* `git config --global core.autocrlf input`
 
-#### Running on Docker`
+Download de project
+* `git clone git@github.com:FelipeNathan/purchasing-power.git`
+
+## Running on Docker
 
 Docker-compose will run the front-end and a api
 
 * Just access http://localhost:3000
 
-#### Prerequisites
+## Prerequisites
 * Docker
 * docker-compose
 
-#### Commands
+## Commands
 * RUN: `docker-compose up -d` (this command will create and start containers)
 * STOP: `docker-compose stop`
 * START: `docker-compose start`
 
-#### Environment Variable
+## Environment Variable
 * `PORT`: the server will listen this configuration
 * `REDIS_URL`: url for redis caching
 * `QUANDL_API_KEY`: key of quandl api
@@ -27,7 +33,7 @@ Docker-compose will run the front-end and a api
 * `SCRAP_HOST`: Url for scrap project
 * `DATABASE_URL`: db-purchasing-power connection string
 
-### Collaborators
+## Collaborators
 | [@FelipeNathan][felipenathan] |
 | :-------------------------------: |
 |       ![][p_felipenathan]         |
