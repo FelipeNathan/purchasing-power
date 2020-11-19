@@ -27,6 +27,6 @@ jobs:
       run: cd api-purchasing-power && \
         rake db:create && \
         rake db:migrate && \
-        rake test && \
+        rake test
     - name: Drop container
       run: docker-compose down
