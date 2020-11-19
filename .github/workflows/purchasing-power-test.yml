@@ -27,6 +27,7 @@ jobs:
     - name: Run tests
       env:
         RAILS_ENV: test
+        DATABASE_URL: postgresql://postgres:123@localhost
       run: > 
         cd api-purchasing-power && 
         gem install bundler &&
