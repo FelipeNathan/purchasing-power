@@ -18,6 +18,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Purchasing Power API Test
     steps:
+    - uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '2.6.6'
     - uses: actions/checkout@v2
     - name: Up container
       run: docker-compose up -d db-purchasing-power
