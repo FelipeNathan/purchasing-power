@@ -25,8 +25,8 @@ jobs:
       env:
         RAILS_ENV: test
       run: cd api-purchasing-power && \
-        rake db:create && \
-        rake db:migrate && \
-        rake test
+        bin/rake db:create && \
+        bin/rake db:migrate && \
+        bin/rake test
     - name: Drop container
       run: docker-compose down
