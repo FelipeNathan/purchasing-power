@@ -27,6 +27,11 @@ jobs:
     - name: Run tests
       env:
         RAILS_ENV: test
-      run: cd api-purchasing-power && bin/rake db:create && bin/rake db:migrate && bin/rake test
+      run: > 
+        cd api-purchasing-power && 
+        gem install bundler &&
+        bin/rake db:create && 
+        bin/rake db:migrate && 
+        bin/rake test
     - name: Drop container
       run: docker-compose down
