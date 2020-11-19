@@ -8,14 +8,15 @@ class V1::CountryController < ActionController::API
     end
 
     def info
-        quandl = RequestQuandlService.new
+        quandl_service = RequestQuandlService.new
+        wage_service = WageService.new
 
         country = Country.where(:abbrev => params[:country]).first
-        wage = WageService.new.getWagesFrom country
-        bmi = quandl.request_bmi(params[:country], params[:limit] || 1)
+        wage = wage_service.getWagesFrom country
+        bmi = quandl_service.request_bmi(params[:country], params[:limit] || 1)
         
         if (country.abbrev.upcase == "BRA")
-            brazilianWages = quandl.request_brazilian_wage
+            brazilianWages = quandl_service.request_brazilian_wage
             wage.date = brazilianWages[:data].first.first.split('-')[0]
             wage.minWage = brazilianWages[:data].first[1]
         end

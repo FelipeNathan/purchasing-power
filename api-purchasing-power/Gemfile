@@ -38,4 +38,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'redis'
 gem 'rack-cors'
-gem 'pg', '1.2.3'
+gem 'pg', '1.2.3', group: [:development, :production]

@@ -27,3 +27,12 @@ heroku-deploy-scrap:
 heroku-deploy-react:
 	heroku config:set APP_BASE=react-purchasing-power -a purchasing-power
 	git push heroku-purchasing-power master
+
+api-test: 
+	cd api-purchasing-power \
+	&& export RAILS_ENV=test \
+	&& docker-compose up -d db-purchasing-power \
+	&& rake db:create \
+	&& rake db:migrate \
+	&& rake test \
+	&& docker-compose stop db-purchasing-power;

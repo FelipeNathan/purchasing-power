@@ -4,14 +4,13 @@ default: &default
    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
    url: <%= ENV['DATABASE_URL'] %>
 
-development:
-   <<: *default
-   database: purchasing-power-dev
-
-
 test:
    <<: *default
    database: purchasing-power-test
+   
+development:
+   <<: *default
+   database: purchasing-power-dev
 
 production:
   <<: *default

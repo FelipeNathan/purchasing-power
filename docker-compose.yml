@@ -70,3 +70,5 @@ services:
         container_name: db-purchasing-power-container
         environment: 
             POSTGRES_PASSWORD: 123
+        ports:
+            - '5432:5432'
