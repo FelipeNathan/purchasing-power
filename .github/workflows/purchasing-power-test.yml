@@ -19,12 +19,14 @@ jobs:
     name: Purchasing Power API Test
     steps:
     - uses: actions/checkout@v2
+    - name: Up container
+      run: docker-compose up -d db-purchasing-power
     - name: Run tests
       env:
         RAILS_ENV: test
       run: cd api-purchasing-power && \
-        docker-compose up -d db-purchasing-power && \
         rake db:create && \
         rake db:migrate && \
         rake test && \
-        docker-compose stop db-purchasing-power
+    - name: Drop container
+      run: docker-compose down
