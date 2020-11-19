@@ -1,0 +1,31 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# This workflow will download a prebuilt Ruby version, install dependencies and run tests with Rake
+# For more information see: https://github.com/marketplace/actions/setup-ruby-jruby-and-truffleruby
+
+name: Test Ruby API
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run tests
+      env:
+        RAILS_ENV: test
+      run: cd api-purchasing-power && \
+        docker-compose up -d db-purchasing-power && \
+        rake db:create && \
+        rake db:migrate && \
+        rake test && \
+        docker-compose stop db-purchasing-power
