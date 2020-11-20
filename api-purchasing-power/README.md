@@ -5,10 +5,11 @@ This is the back-end API project of the Purchasing Power, made with Ruby On Rail
 
 This project is still in progress, cuz I'm migrating some features of scrap-purchasing-power to this project.
 
-#### Techs
+#### Prerequisites
 - ![](https://img.shields.io/badge/Ruby-2.2.6-green)
 - ![](https://img.shields.io/badge/Rails-6.0.3-green)
-
+- ![](https://img.shields.io/badge/Bundler-2.1.4-green)
+- libpq-dev (for postgres)
 
 #### Setup
 First clone our repository
@@ -24,10 +25,12 @@ cd purchasing-power/api-purchasing-power
 Then install dependencies
 
 ```
-gem install bundler
-bundle install
-rake db:migrate
-rake db:seed
+$ apt-get update
+$ apt-get install -y libpq-dev
+$ gem install bundler
+$ bundle install
+$ rake db:migrate
+$ rake db:seed
 ```
 
 and execute

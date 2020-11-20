@@ -3,6 +3,14 @@ A project to compare the purchasing power of countries, using the concept of [Bi
 
 This is the project that Dockerize the react-purchasing-power and scrap-purchasing-power
 
+## Prerequisites 
+### For Docker usage
+* Docker
+* docker-compose
+
+### For localhost usage
+* Check each project's README.md
+
 ## Instalation
 For Window user, need to download the project with linux file type (lf instad crlf)
 * `git config --global core.autocrlf input`
@@ -16,9 +24,8 @@ Docker-compose will run the front-end and a api
 
 * Just access http://localhost:3000
 
-## Prerequisites
-* Docker
-* docker-compose
+## Running in localhost
+* Check each project's README.md
 
 ## Commands
 * RUN: `docker-compose up -d` (this command will create and start containers)

@@ -31,6 +31,7 @@ heroku-deploy-react:
 api-test: 
 	cd api-purchasing-power \
 	&& export RAILS_ENV=test \
+	&& export DATABASE_URL=postgresql://postgres:123@localhost/ \
 	&& docker-compose up -d db-purchasing-power \
 	&& rake db:create \
 	&& rake db:migrate \
