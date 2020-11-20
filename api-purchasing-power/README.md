@@ -12,6 +12,15 @@ This project is still in progress, cuz I'm migrating some features of scrap-purc
 - libpq-dev (for postgres)
 
 #### Setup
+For Ruby, follow [this instructions](https://www.ruby-lang.org/pt/documentation/installation/)
+
+Install prerequisites and libs
+```
+$ apt-get update
+$ apt-get install -y libpq-dev
+$ gem install bundler
+```
+
 First clone our repository
 ```
 git clone https://github.com/FelipeNathan/purchasing-power.git
@@ -25,12 +34,8 @@ cd purchasing-power/api-purchasing-power
 Then install dependencies
 
 ```
-$ apt-get update
-$ apt-get install -y libpq-dev
-$ gem install bundler
 $ bundle install
-$ rake db:migrate
-$ rake db:seed
+$ rake db:create db:migrate db:seed DATABASE_URL=<URL_FOR_POSTGRES_DB>
 ```
 
 and execute
