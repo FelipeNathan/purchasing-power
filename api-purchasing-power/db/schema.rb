@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_12_172242) do
+ActiveRecord::Schema.define(version: 2020_12_21_005320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bmis", force: :cascade do |t|
+    t.bigint "country_id", null: false
+    t.datetime "date"
+    t.float "local_price"
+    t.float "dollar_ex"
+    t.float "dollar_price"
+    t.float "dollar_ppp"
+    t.float "dollar_valuation"
+    t.float "dollar_adj_valuation"
+    t.float "euro_adj_valuation"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_bmis_on_country_id"
+  end
 
   create_table "countries", force: :cascade do |t|
     t.string "abbrev"
@@ -22,4 +37,16 @@ ActiveRecord::Schema.define(version: 2020_11_12_172242) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "wage_infos", force: :cascade do |t|
+    t.bigint "country_id", null: false
+    t.integer "year_of_wage"
+    t.float "min_wage"
+    t.string "symbol"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_wage_infos_on_country_id"
+  end
+
+  add_foreign_key "bmis", "countries"
+  add_foreign_key "wage_infos", "countries"
 end
