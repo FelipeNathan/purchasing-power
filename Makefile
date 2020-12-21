@@ -37,3 +37,9 @@ api-test:
 	&& rake db:migrate \
 	&& rake test \
 	&& docker-compose stop db-purchasing-power;
+
+init-local-db-redis:
+	docker-compose up -d redis-purchasing-power db-purchasing-power
+	cd api-purchasing-power \
+	&& export DATABASE_URL=postgresql://postgres:123@localhost/purchasing-power-dev \
+	&& rake db:create db:migrate db:seed;
