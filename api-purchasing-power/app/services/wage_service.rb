@@ -12,7 +12,7 @@ class WageService
     @quandl_service = RequestQuandlService.new
   end
   
-  def getWages
+  def get_wages
     data = @redis.get("wage_list")
     
     if data.nil?
@@ -24,15 +24,14 @@ class WageService
     return data
   end
   
-  def getFromScrap(country)
-    wages = JSON.parse(getWages, object_class: OpenStruct)
+  def create_or_update_wage(country, wageInfo)
+    wages = JSON.parse(get_wages, object_class: OpenStruct)
     countryWage = wages.select { |w| w.country.upcase == country.name.upcase }.first
     
-    wageInfo = WageInfo.new(
-      year_of_wage: countryWage.date.to_i,
-      min_wage: countryWage.minWage.to_f,
-      symbol: countryWage.symbol
-    )
+    wageInfo = WageInfo.new if wageInfo.nil?
+    wageInfo.year_of_wage = countryWage.date.to_i
+    wageInfo.min_wage = countryWage.minWage.to_f
+    wageInfo.symbol = countryWage.symbol
     
     if country.abbrev.upcase == "BRA"
       brazilianWages = @quandl_service.request_brazilian_wage
@@ -45,7 +44,13 @@ class WageService
     wageInfo
   end
 
-  def getWagesFrom(country) 
-    wageInfo = WageInfo.where(country: country).first || getFromScrap(country)
+  def get_wages_from(country) 
+    wageInfo = WageInfo.where(country: country).first 
+    
+    if wageInfo.nil? || (DateTime.now - wafeInfo.updated_at) > 182 # se passar de 6 meses da informação
+      wageInfo = create_or_update_wage(country, wageInfo)
+    end
+
+    wageInfo
   end
 end

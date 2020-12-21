@@ -6,6 +6,7 @@ require 'json'
 class V1::CountryController < ActionController::API
   
   def initialize
+    super
     @quandl_service = RequestQuandlService.new
     @wage_service = WageService.new 
     @bmi_service = BmiService.new
@@ -18,7 +19,7 @@ class V1::CountryController < ActionController::API
   def info
     country = Country.where(:abbrev => params[:country]).first
     bmi = @bmi_service.get_bmi_by_country(country)
-    wage = @wage_service.getWagesFrom(country)
+    wage = @wage_service.get_wages_from(country)
     
     render json: {
       wage: wage.as_json(:except => [:created_at, :updated_at, :country_id]),

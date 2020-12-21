@@ -40,7 +40,7 @@ class RequestQuandlService
 
             response = Net::HTTP.get_response uri
 
-            raise "Failed to load data" unless response.is_a? Net::HTTPSuccess
+            raise "Failed to load data: #{response.message}" unless response.is_a? Net::HTTPSuccess
         
             return response.body
         end
