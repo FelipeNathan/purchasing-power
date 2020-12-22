@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  jti: MyString
+  aud: MyString
+  exp: 2020-12-22 12:14:39
+  user: one
+
+two:
+  jti: MyString
+  aud: MyString
+  exp: 2020-12-22 12:14:39
+  user: two

@@ -3,7 +3,9 @@ require_relative '../../services/bmi_service.rb'
 require_relative '../../services/request_quandl_service.rb'
 require 'json'
 
-class V1::CountryController < ActionController::API
+class V1::CountryController < ApplicationController
+  
+  # before_action :authenticate_user!
   
   def initialize
     super

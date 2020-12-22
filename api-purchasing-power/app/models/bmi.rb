@@ -1,3 +1,3 @@
-class Bmi < ActiveRecord::Base
+class Bmi < ApplicationRecord
   belongs_to :country
 end

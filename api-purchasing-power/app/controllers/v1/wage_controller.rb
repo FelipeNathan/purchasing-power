@@ -1,6 +1,6 @@
 require_relative '../../services/wage_service.rb'
 
-class V1::WageController < ActionController::API
+class V1::WageController < ApplicationController
   
   def initialize
     super

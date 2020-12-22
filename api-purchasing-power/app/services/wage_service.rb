@@ -47,7 +47,7 @@ class WageService
   def get_wages_from(country) 
     wageInfo = WageInfo.where(country: country).first 
     
-    if wageInfo.nil? || (DateTime.now - wafeInfo.updated_at) > 182 # se passar de 6 meses da informação
+    if wageInfo.nil? || (DateTime.now - wageInfo.updated_at.to_datetime).to_i > 182 # se passar de 6 meses da informação
       wageInfo = create_or_update_wage(country, wageInfo)
     end
 
