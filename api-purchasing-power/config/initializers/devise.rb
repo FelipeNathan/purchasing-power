@@ -312,5 +312,6 @@ Devise.setup do |config|
   # Devise JWT
   config.jwt do |jwt| 
     jwt.secret = Rails.application.secrets.jwt_secret
+    jwt.expiration_time = 1.day.to_i
   end
 end
