@@ -25,9 +25,10 @@ export default function Country(props) {
             setLoading(false)
             setCountryInfo(info.data)
 
-            props.onCountrySelected(info.data, props.name)
+            if (props.onCountrySelected){
+                props.onCountrySelected(info.data, props.name)
+            }
         }).catch(err => {
-
             setLoading(false)
             console.log(err)
         })
@@ -43,8 +44,8 @@ export default function Country(props) {
                     styles={{
                         control: (base, state) => ({
                             ...base,
-                            borderColor: '#17a2b8',
-                            boxShadow: state.isFocused ? '0 0 1px #17a2b8' : 'none',
+                            borderColor: '#dc3545',
+                            boxShadow: state.isFocused ? '0 0 1px #dc3545' : 'none',
                         })
                     }} />
             </Form.Group>

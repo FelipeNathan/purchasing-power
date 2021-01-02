@@ -3,21 +3,21 @@ import ReactDOM from 'react-dom';
 import { Router } from '@reach/router'
 import './index.css';
 import App from './App';
+import BigMacIndex from './component/big-mac-index'
+import NationalPurchasingPower from './component/national-purchasing-power'
 import PrivacyPolicy from './component/policy-privacy'
-import Header from './component/header'
 import * as serviceWorker from './serviceWorker'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
   <>
-    <Header />
-    <div className="content">
-      <Router>
-        <App path="/" />
-        <PrivacyPolicy path="/privacy-policy" />
-      </Router>
-    </div>
+    <Router>
+      <App path="/" />
+      <BigMacIndex path="/big-max-index" />
+      <NationalPurchasingPower path="/ppp" />
+      <PrivacyPolicy path="/privacy-policy" />
+    </Router>
   </>
   ,
   document.getElementById('root')
