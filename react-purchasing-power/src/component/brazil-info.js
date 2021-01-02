@@ -22,7 +22,7 @@ export default function BrasilInfo(props) {
 
     return (
         <>
-            <h4><em>Big Mac Index</em> para o Brasil</h4>
+            <h4>Big Mac Index - Brasil</h4>
             <Table striped hover variant="light">
                 <thead>
                     <tr className="table-info">
