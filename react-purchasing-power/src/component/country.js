@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Select from 'react-select'
-import Form from 'react-bootstrap/Form'
+import { Card, Container, Form } from 'react-bootstrap'
 import CountryInfo from './country-info'
 import * as apiService from '../service/backend-api-service'
 import Loading from './loading'
@@ -10,12 +10,30 @@ export default function Country(props) {
     const [isLoading, setLoading] = useState(false)
     const [countryInfo, setCountryInfo] = useState(null)
 
-    const countries = props.countries.map((el, index) => {
-        return {
-            value: el.abbrev,
-            label: el.name
-        }
-    })
+    const [countries, setCountries] = useState([])
+  
+    useEffect(() => {
+      apiService.getCountries().then(countries => {
+
+        countries.data.sort((a, b) => {
+          if (a.name < b.name)
+            return -1
+          else if (a.name > b.name)
+            return 1
+
+          return 0
+        });
+
+        setCountries(countries.data.map((el, index) => {
+          return {
+              value: el.abbrev,
+              label: el.name
+          }
+      }))
+
+      }, err => console.log(err))
+    }, [countries.length])
+
 
     function handleSelect(country) {
 
@@ -36,21 +54,33 @@ export default function Country(props) {
 
     return (
         <>
-            <Form.Group>
-                <Select
-                    options={countries}
-                    onChange={handleSelect}
-                    placeholder={"Selecione um país..."}
-                    styles={{
+        <Container className={ props.className } id={ props.id }>
+          <Card className="shadow">
+            <Card.Header className="bg-danger w-100 align-center d-flex">
+              <div className="mx-auto border rounded-circle bg-light p-4">
+                <Card.Img variant="top" src="scale.png" className="mx-auto" style={{ width: '150px', height: '150px'}} /> 
+              </div>
+            </Card.Header>
+            <Card.Body>
+              <Card.Title>Comparador</Card.Title>
+                <Form.Group>
+                  <Select
+                      options={countries}
+                      onChange={handleSelect}
+                      placeholder={"Selecione um país..."}
+                      styles={{
                         control: (base, state) => ({
-                            ...base,
-                            borderColor: '#dc3545',
-                            boxShadow: state.isFocused ? '0 0 1px #dc3545' : 'none',
+                          ...base,
+                          borderColor: '#dc3545',
+                          boxShadow: state.isFocused ? '0 0 1px #dc3545' : 'none',
                         })
-                    }} />
-            </Form.Group>
+                      }} />
+                </Form.Group>
 
-            {isLoading ? <Loading /> : <CountryInfo countryInfo={countryInfo} />}
+                {isLoading ? <Loading /> : <CountryInfo countryInfo={countryInfo} />}
+            </Card.Body>
+          </Card>
+        </Container>
         </>
     )
 

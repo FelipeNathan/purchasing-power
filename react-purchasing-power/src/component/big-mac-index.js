@@ -1,29 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import Country from './country'
 import Card from 'react-bootstrap/Card'
+import Container from 'react-bootstrap/Container'
 import * as apiService from '../service/backend-api-service'
-import BigMacIndexCover from './big-mac-index-cover/big-mac-index-cover'
 
 export default function BigMaxIndex(props) {
-
-  const [countries, setCountries] = useState([])
-  
-  useEffect(() => {
-    apiService.getCountries().then(countries => {
-
-      countries.data.sort((a, b) => {
-        if (a.name < b.name)
-          return -1
-        else if (a.name > b.name)
-          return 1
-
-        return 0
-      });
-
-      setCountries(countries.data)
-
-    }, err => console.log(err))
-  }, [])
 
     const bigMacIndexDescription = `
       O Big Mac Index compara os preços do Big Mac em diferentes países no mundo onde contém a cadeia de restaurantes McDonald's.</br>
@@ -39,27 +19,25 @@ export default function BigMaxIndex(props) {
     `.split('</br>');
 
     return (
-        <BigMacIndexCover spacing>
-          <div className="container">
-            { createParagraphs(bigMacIndexDescription) }
+      <>
+        <Container className={ props.className } id={ props.id }>
+          <Card className="shadow">
+            <Card.Header className="bg-danger w-100 align-center d-flex">
+              <Card.Img variant="top" src="hamburguer.png" className="mx-auto" style={{ width: '200px', height: '200px'}} />
+            </Card.Header>
+            <Card.Body>
+              <Card.Title>Big Mac Index</Card.Title>
+              { createParagraphs(bigMacIndexDescription) }
+              <Card.Title> Como é calculado o Big Mac Index? </Card.Title>
+              { createParagraphs(howToCalc) }
 
-            <h4 className="text-left my-4"> Como é calculado o Big Mac Index? </h4>
-            { createParagraphs(howToCalc) }
-
-            <Card border="danger">
-              <Card.Header className="danger"></Card.Header>
-              <Card.Body>
-                <Country
-                  countries={countries}
-                  name="Country1"
-                />
-              </Card.Body>
-            </Card>
-          </div>
-        </BigMacIndexCover>
+            </Card.Body>
+          </Card>
+        </Container>
+      </>
     )
 }
 
 function createParagraphs(paragraphs) { 
-  return paragraphs.map((paragraph, index) => <p className="text-justify" key={index}> {paragraph.trim()}</p>)
+  return paragraphs.map((paragraph, index) => <Card.Text key={index}> {paragraph.trim()}</Card.Text>)
 }
