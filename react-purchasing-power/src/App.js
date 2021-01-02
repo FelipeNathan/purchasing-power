@@ -1,38 +1,29 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './App.css'
 
+import BigMacIndex from './component/big-mac-index'
 import BrasilInfo from './component/brazil-info'
+import Country from './component/country'
 import Footer from './component/footer'
-import Fontes from './component/fontes'
-
-import Carousel from 'react-bootstrap/Carousel'
-import BigMacIndexCover from './component/big-mac-index-cover/big-mac-index-cover'
-import NationalPurchasingPowerCover from './component/national-purchasing-power-cover/national-purchasing-power-cover'
+import Header from './component/header'
+import NationalPurchasingPower from './component/national-purchasing-power'
 
 export default function App() {
 
-  const [index, setIndex] = useState(0);
-
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
-  };
-
   return (
-    <>
-      <Carousel activeIndex={index} onSelect={handleSelect}>
-        <Carousel.Item>
-          <BigMacIndexCover showMore />
-        </Carousel.Item>
-        <Carousel.Item>
-          <NationalPurchasingPowerCover showMore />
-        </Carousel.Item>
-      </Carousel>
-      
-      <div className="container">
-        <BrasilInfo />
-        <Fontes />
-        <Footer /> 
+    <div>    
+      <Header />
+      <div className="pt-5" data-spy="scroll" data-target="#nav-top" data-offset="0">
+        <Country className="mt-5" id="compare"/>
+        <NationalPurchasingPower className="mt-5" id="ppp"/>
+        <BigMacIndex className="mt-5" id="bmi"/>
+        <BrasilInfo className="mt-5" id="brasil"/>
+    
+        <div className="container">
+          {/* <Fontes /> */}
+          <Footer /> 
+        </div>
       </div>
-    </>
+    </div>
   );
 }

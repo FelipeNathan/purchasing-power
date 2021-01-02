@@ -2,19 +2,14 @@ body {
   font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif !important;
 }
 
-.card-header {
-  background-color: #dc3545 !important;
-  color: white;
-}
-
 .footer {
   padding: 1rem;
 }
 
-/* .shadow-bottom {
-  box-shadow: 0 6px 15px 2px grey;
+.bg-brasil-green {
+  background-color: rgb(0, 156, 59) !important;
 }
 
-.text-shadow-bottom {
-  text-shadow: 0px 5px 10px black;
-} */
+.dropdown-toggle::after {
+  display: none !important;
+}
