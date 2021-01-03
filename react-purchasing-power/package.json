@@ -26,7 +26,7 @@
     "webpack": "4.42.0"
   },
   "scripts": {
-    "start": "BROWSER=none REACT_APP_SCRAP_API=https://api-purchasing-power.herokuapp.com/ react-scripts start",
+    "start": "BROWSER=none react-scripts start",
     "build": "react-scripts build"
   },
   "eslintConfig": {

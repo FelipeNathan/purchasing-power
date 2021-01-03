@@ -34,7 +34,7 @@ export default function BrasilInfo(props) {
               <tr className="bg-brasil-green text-light">
                 <th className="align-middle text-center">Data</th>
                 <th className="align-middle text-center">Big Mac no Brasil</th>
-                <th className="align-middle text-center">Big Mac no EUA</th>
+                <th className="align-middle text-center">Convertido em dólar</th>
                 <th className="align-middle text-center">Taxa de câmbio</th>
                 <th className="align-middle text-center">Índice de equilíbrio</th>
                 <th className="align-middle text-center">Taxa de Valorização do Real</th>
@@ -49,8 +49,8 @@ export default function BrasilInfo(props) {
                       <tr key={i}>
                         <td className="align-middle text-center">{dateFormat(row[0], 'mmm/yyyy')} </td>
                         <td className="align-middle text-center">{format(row[1], 'R$', 2)}</td>
-                        <td className="align-middle text-center">{format(row[2], 'US$', 2)}</td>
                         <td className="align-middle text-center">{format(row[3], 'US$', 2)}</td>
+                        <td className="align-middle text-center">{format(row[2], 'US$', 2)}</td>
                         <td className="align-middle text-justify d-flex h-1">
                           <div className="mx-2 pt-1"> {format(row[4], 'R$', 2)} </div>
                           

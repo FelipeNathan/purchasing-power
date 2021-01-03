@@ -62,7 +62,7 @@ export default function CountryStepSelector(props) {
     return (
         <Container className={ props.className } id={ props.id }>
           <Card className="shadow">
-            <Card.Header className="bg-danger w-100 align-center d-flex">
+            <Card.Header className="bg-warning w-100 align-center d-flex">
               <div className="mx-auto border rounded-circle bg-light p-4">
                 <Card.Img variant="top" src="scale.png" className="mx-auto" style={{ width: '150px', height: '150px'}} /> 
               </div>
@@ -76,7 +76,7 @@ export default function CountryStepSelector(props) {
                   <li className={checkStep(2)} onClick={() => handleChangeStep(2)}> = </li>
                 </ul>
                 <div className="progress" style={{ height: '5px', marginTop: '-45px' }}>
-                  <div className="progress-bar bg-danger" style={checkPercetage()}role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="3"></div>
+                  <div className="progress-bar bg-warning" style={checkPercetage()}role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="3"></div>
                 </div>
               </Card.Title>
               <Carousel controls={ false } interval={ null } className="h-100 pt-5" activeIndex={ indexStep }>
@@ -93,8 +93,8 @@ export default function CountryStepSelector(props) {
             </Card.Body>
             <Card.Footer className="bg-transparent">
                 <div className="d-flex justify-content-between">
-                  <Button variant="danger" disabled={indexStep === 0} onClick={() => handleChangeStep(indexStep - 1)}> Anterior </Button>
-                  <Button variant="danger" disabled={(selectedCountries.length === indexStep) || indexStep === 2} onClick={() => handleChangeStep(indexStep + 1)}> Próximo </Button>
+                  <Button variant="warning" disabled={indexStep === 0} onClick={() => handleChangeStep(indexStep - 1)}> Anterior </Button>
+                  <Button variant="warning" disabled={(selectedCountries.length === indexStep) || indexStep === 2} onClick={() => handleChangeStep(indexStep + 1)}> Próximo </Button>
                 </div>
               </Card.Footer>
           </Card>
