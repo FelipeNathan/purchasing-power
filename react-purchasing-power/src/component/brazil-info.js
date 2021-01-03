@@ -29,7 +29,7 @@ export default function BrasilInfo(props) {
         <Card.Body>
           <Card.Title>Big Mac Index <small className="text-muted">(Brasil)</small></Card.Title>
           
-          <Table striped hover variant="light">
+          <Table striped hover variant="light" responsive >
             <thead>
               <tr className="bg-brasil-green text-light">
                 <th className="align-middle text-center">Data</th>
