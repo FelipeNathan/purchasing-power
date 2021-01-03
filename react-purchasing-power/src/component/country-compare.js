@@ -1,25 +1,22 @@
 import React, { useState, useEffect } from 'react'
-import ListGroup from 'react-bootstrap/ListGroup'
-import { FaMedal } from 'react-icons/fa'
+import { Container, ListGroup } from 'react-bootstrap'
 import { format } from '../util/number-format-util'
 
 export default function CountryCompare(props) {
 
-    const { thisCountry, compareCountry } = props
-
-    const icon = <FaMedal className="text-info" />
+    const firstCountry = props.countries[0]
+    const secondCountry = props.countries[1]
 
     const [bmiDiff, setResultBMI] = useState(null)
-    const [isPurchasingPowerWinner, setResultPurchasingPower] = useState(null)
 
     useEffect(() => {
-
+        
         function compareBMI() {
 
-            const thisCountryBigMacPrice = thisCountry.bmi.dollar_price
-            const compareCountryBigMacPrice = compareCountry.bmi.dollar_price
+            const firstCountryRate = firstCountry.bmi.dollar_ex
+            const secondCountryRate = secondCountry.bmi.dollar_ex
 
-            const diff = thisCountryBigMacPrice - compareCountryBigMacPrice
+            const diff = firstCountryRate - secondCountryRate
 
             if (diff !== 0) {
                 setResultBMI(diff)
@@ -28,55 +25,59 @@ export default function CountryCompare(props) {
             }
         }
 
+        compareBMI()
 
-        function comparePurchasingPower() {
-            const thisCountryCountMac = thisCountry.minWage / thisCountry.bmi.local_price
-            const compareCountryCountMac = compareCountry.minWage / compareCountry.bmi.local_price
-
-            const diff = thisCountryCountMac - compareCountryCountMac
-            if (diff !== 0) {
-                setResultPurchasingPower(diff > 0)
-            } else {
-                setResultBMI(null)
-            }
-
-        }
-
-        if (thisCountry && compareCountry) {
-            compareBMI()
-            comparePurchasingPower()
-        }
-    }, [thisCountry, compareCountry])
+    }, [firstCountry, secondCountry])
 
     return (
+      <Container style={{ height: '400px'}}>
         <ListGroup variant="flush">
-            <ListGroup.Item>
-                <h5 className="mb-1">Comparação</h5>
-            </ListGroup.Item>
-            <ListGroup.Item>
-                <div className="d-flex w-100 justify-content-between">
-                    <p className="mb-1"> Big Mac Index</p> {bmiDiff > 0 ? icon : null}
-                </div>
+          <ListGroup.Item>
+            <h5 className="mb-3">Valor do Big Mac</h5>
+            <div className="d-flex flex-row">
+              <div className="font-weight-bold mr-2">{ firstCountry.country }: </div>
+              <div>{ format(firstCountry.bmi.local_price, firstCountry.symbol) } </div>
+            </div>
+            <div className="d-flex flex-row">
+              <div className="font-weight-bold mr-2">{ secondCountry.country }: </div>
+              <div>{ format(secondCountry.bmi.local_price, secondCountry.symbol) } </div>
+            </div>
+          </ListGroup.Item>
 
-                {!bmiDiff
-                    ? <small className="text-muted"> Ambos os países tem o mesmo valor do Big Mac em dólar, tanto faz se compra aqui ou lá então! </small>
-                    :
-                    bmiDiff > 0
-                ? <small className="text-muted"> Se converter a moeda do(a) {thisCountry.country} em dólar, você poderá comprar mais ou menos {format(bmiDiff, '', 2)} Big Macs no(a) {compareCountry.country}</small>
-                        : <small className="text-muted"> É melhor comer Big Mac aqui antes de viajar </small>
-                    }
+          <ListGroup.Item>
+            <h5 className="mb-3">Big Mac Index</h5>
+            <div className="d-flex flex-row">
+              <div className="font-weight-bold mr-2">{ firstCountry.country }: </div>
+              <div> Big Mac em dollar: { format(firstCountry.bmi.dollar_price, '$') }, taxa de câmbio { format(firstCountry.bmi.dollar_ex) } </div>
+            </div>
+            <div className="d-flex flex-row mb-3">
+              <div className="font-weight-bold mr-2">{ secondCountry.country }: </div>
+              <div>Big Mac em dollar: { format(secondCountry.bmi.dollar_price, '$') }, taxa de câmbio { format(secondCountry.bmi.dollar_ex) } </div>
+            </div>
+            
+            <div> Considerando o valor do Big Mac em dólar,  
+              {!bmiDiff
+                  ? ' ambos os países tem o mesmo valor monetário, segundo o cálculo do Big Mac Index'
+                  : (bmiDiff < 0 ? 
+                    ` ${firstCountry.country}, tem a moeda mais valorizada que ${secondCountry.country}`
+                    : ` ${secondCountry.country}, tem a moeda mais valorizada que ${firstCountry.country}`)
+                  }
+            </div>
 
-            </ListGroup.Item>
-            <ListGroup.Item>
-                <div className="d-flex w-100 justify-content-between">
-                    <p className="mb-1"> Poder de compra nacional </p> {isPurchasingPowerWinner ? icon : null}
-                </div>
-                {
-                    thisCountry.country
-                        ? <small className="text-muted"> No(a) {thisCountry.country} você pode comprar mais ou menos {format(thisCountry.minWage / thisCountry.bmi.local_price, '', 0)} Big Macs</small>
-                        : <div className="alert alert-danger text-center">Este país não tem todos os dados para comparação</div>
-                }
-            </ListGroup.Item>
+          </ListGroup.Item>
+          <ListGroup.Item>
+              <h5 className="mb-1"> Poder de compra nacional </h5>
+              <p className="text-muted mb-3">Quantidade de Big Macs que se pode comprar com o salário mínimo: </p>
+              <div className="d-flex flex-row">
+                <div className="font-weight-bold mr-2">{ firstCountry.country }: </div>
+                <div> {format(firstCountry.minWage / firstCountry.bmi.local_price, '', 0)} </div>
+              </div>
+              <div className="d-flex flex-row">
+                <div className="font-weight-bold mr-2">{ secondCountry.country }: </div>
+                <div> {format(secondCountry.minWage / secondCountry.bmi.local_price, '', 0)} </div>
+              </div>
+          </ListGroup.Item>
         </ListGroup>
+      </Container>
     )
 }

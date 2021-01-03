@@ -7,33 +7,33 @@ export default function Footer() {
 
     return (
         <>
-            <div className="bg-dark footer">
+            <div className="bg-transparent footer">
                 <Container>
                     <Row>
                         <Col>
                             <Link to="/privacy-policy"
                                 target="_blank"
-                                className="mr-3 text-decoration-none text-light"> Política de privacidade</Link>
+                                className="mr-3 text-decoration-none text-dark"> Política de privacidade</Link>
                         </Col>
                         <Col className="d-flex justify-content-end">
                             <a href="https://twitter.com/LipeCampigoto"
                                 target="_blank"
-                                className="mr-3 text-decoration-none text-light"
+                                className="mr-3 text-decoration-none text-dark"
                                 rel="noopener noreferrer"><GrTwitter /></a>
 
                             <a href="https://www.linkedin.com/in/felipe-nathan-campigoto-18a3355a/"
                                 target="_blank"
-                                className="mr-3 text-decoration-none text-light"
+                                className="mr-3 text-decoration-none text-dark"
                                 rel="noopener noreferrer"><GrLinkedin /></a>
 
                             <a href="https://www.facebook.com/ncampigoto"
                                 target="_blank"
-                                className="mr-3 text-decoration-none text-light"
+                                className="mr-3 text-decoration-none text-dark"
                                 rel="noopener noreferrer"><GrFacebook /></a>
 
                             <a href="https://github.com/felipenathan/"
                                 target="_blank"
-                                className="mr-3 text-decoration-none text-light"
+                                className="mr-3 text-decoration-none text-dark"
                                 rel="noopener noreferrer"><GrGithub /></a>
 
 
