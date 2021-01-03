@@ -21,7 +21,7 @@ export default function BigMaxIndex(props) {
       <>
         <Container className={ props.className } id={ props.id }>
           <Card className="shadow">
-            <Card.Header className="bg-danger w-100 align-center d-flex">
+            <Card.Header className="bg-warning w-100 align-center d-flex">
               <Card.Img variant="top" src="hamburguer.png" className="mx-auto" style={{ width: '200px', height: '200px'}} />
             </Card.Header>
             <Card.Body>
