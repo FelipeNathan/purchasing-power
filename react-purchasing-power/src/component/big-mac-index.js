@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container'
-import * as apiService from '../service/backend-api-service'
 
 export default function BigMaxIndex(props) {
 

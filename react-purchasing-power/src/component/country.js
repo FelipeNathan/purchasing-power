@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Select from 'react-select'
-import { Card, Container, Form } from 'react-bootstrap'
+import { Container, Form } from 'react-bootstrap'
 import CountryInfo from './country-info'
 import * as apiService from '../service/backend-api-service'
 import Loading from './loading'
@@ -53,35 +53,22 @@ export default function Country(props) {
     }
 
     return (
-        <>
-        <Container className={ props.className } id={ props.id }>
-          <Card className="shadow">
-            <Card.Header className="bg-danger w-100 align-center d-flex">
-              <div className="mx-auto border rounded-circle bg-light p-4">
-                <Card.Img variant="top" src="scale.png" className="mx-auto" style={{ width: '150px', height: '150px'}} /> 
-              </div>
-            </Card.Header>
-            <Card.Body>
-              <Card.Title>Comparador</Card.Title>
-                <Form.Group>
-                  <Select
-                      options={countries}
-                      onChange={handleSelect}
-                      placeholder={"Selecione um país..."}
-                      styles={{
-                        control: (base, state) => ({
-                          ...base,
-                          borderColor: '#dc3545',
-                          boxShadow: state.isFocused ? '0 0 1px #dc3545' : 'none',
-                        })
-                      }} />
-                </Form.Group>
-
-                {isLoading ? <Loading /> : <CountryInfo countryInfo={countryInfo} />}
-            </Card.Body>
-          </Card>
+        <Container style={{ height: '400px'}}>
+          <Form.Group>
+            <Select
+                options={countries}
+                onChange={handleSelect}
+                placeholder={"Selecione um país..."}
+                styles={{
+                  control: (base, state) => ({
+                    ...base,
+                    borderColor: '#dc3545',
+                    boxShadow: state.isFocused ? '0 0 1px #dc3545' : 'none',
+                  })
+                }} />
+          {isLoading ? <Loading /> : <CountryInfo countryInfo={countryInfo} />}
+          </Form.Group>
         </Container>
-        </>
     )
 
 }
