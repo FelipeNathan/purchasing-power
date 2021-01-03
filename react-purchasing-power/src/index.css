@@ -13,3 +13,31 @@ body {
 .dropdown-toggle::after {
   display: none !important;
 }
+
+.step {
+  list-style-type: none;
+  display: flex;
+}
+
+.step li {
+  z-index: 20;
+  width: 50px;
+  height: 50px;
+  border: 1px #e9ecef solid;
+  border-radius: 50%;
+  text-align: center;
+  padding: 10px;
+  background-color: #e9ecef;
+  cursor: pointer;
+}
+
+.step li.step-current {
+  border: 3px #dc3545 solid;
+  background-color: #e9ecef;
+}
+
+.step li.step-complete {
+  border: 1px #dc3545 solid;
+  background-color: #dc3545 !important;
+  color: white; 
+}

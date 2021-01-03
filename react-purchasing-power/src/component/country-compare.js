@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import ListGroup from 'react-bootstrap/ListGroup'
+import { Container, ListGroup } from 'react-bootstrap'
 import { FaMedal } from 'react-icons/fa'
 import { format } from '../util/number-format-util'
 
 export default function CountryCompare(props) {
 
-    const { thisCountry, compareCountry } = props
+    const thisCountry = props.countries[0]
+    const compareCountry = props.countries[1]
 
     const icon = <FaMedal className="text-info" />
 
@@ -42,14 +43,13 @@ export default function CountryCompare(props) {
 
         }
 
-        if (thisCountry && compareCountry) {
-            compareBMI()
-            comparePurchasingPower()
-        }
+        compareBMI()
+        comparePurchasingPower()
+        
     }, [thisCountry, compareCountry])
 
     return (
-      <>
+      <Container style={{ height: '400px'}}>
         <ListGroup variant="flush">
           <ListGroup.Item>
             <h5 className="mb-1">Comparação</h5>
@@ -79,6 +79,6 @@ export default function CountryCompare(props) {
             }
           </ListGroup.Item>
         </ListGroup>
-      </>
+      </Container>
     )
 }
