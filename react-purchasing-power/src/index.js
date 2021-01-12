@@ -6,7 +6,7 @@ import App from './App';
 import PrivacyPolicy from './component/policy-privacy'
 import * as serviceWorker from './serviceWorker'
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './scss/custom.scss';
 
 ReactDOM.render(
     <Router>

@@ -62,8 +62,8 @@ export default function Country(props) {
                 styles={{
                   control: (base, state) => ({
                     ...base,
-                    borderColor: '#ffc107',
-                    boxShadow: state.isFocused ? '0 0 1px #ffc107' : 'none',
+                    borderColor: '#ffd75e',
+                    boxShadow: state.isFocused ? '0 0 1px #ffd75e' : 'none',
                   })
                 }} />
           {isLoading ? <Loading /> : <CountryInfo countryInfo={countryInfo} />}

@@ -32,12 +32,12 @@ body {
 }
 
 .step li.step-current {
-  border: 3px #ffc107 solid;
+  border: 3px #ffd75e solid;
   background-color: #e9ecef;
 }
 
 .step li.step-complete {
-  border: 1px #ffc107 solid;
-  background-color: #ffc107 !important;
+  border: 1px #ffd75e solid;
+  background-color: #ffd75e !important;
   color: white; 
 }

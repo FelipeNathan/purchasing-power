@@ -23,7 +23,8 @@
     "react-loading-screen": "0.0.17",
     "react-scripts": "3.4.1",
     "react-select": "3.1.0",
-    "webpack": "4.42.0"
+    "webpack": "4.42.0",
+    "node-sass": "^4.0.0"
   },
   "scripts": {
     "start": "BROWSER=none react-scripts start",
